@@ -10,6 +10,7 @@ describe('backend-express-template routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
+
   it('/zodaics should return a list of zodiacs', async () => {
     const response = await request(app).get('/zodiacs');
     const expected = zodiacs.map((sign) => { return { id: sign.id, name: sign.name };
@@ -17,6 +18,21 @@ describe('backend-express-template routes', () => {
 
     expect(response.body).toEqual(expected);
   });
+
+  it('/zodaic/:id should return Zodiac detail', async () => {
+    const response = await request(app).get('/zodiacs/1');
+    const expected = {
+      'dates': 'Jan 21 - Feb 19',
+      'id': '1',
+      'name': 'aquarius',
+      'symbol': 'Water Bearer',
+    }
+  ;
+    
+
+    expect(response.body).toEqual(expected);
+  });
+
   afterAll(() => {
     pool.end();
   });
