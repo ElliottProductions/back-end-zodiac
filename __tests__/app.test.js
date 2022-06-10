@@ -24,7 +24,7 @@ describe('backend-express-template routes', () => {
     const expected = {
       'dates': 'Jan 21 - Feb 19',
       'id': '1',
-      'name': 'aquarius',
+      'name': 'noquarius',
       'symbol': 'Water Bearer',
     }
   ;
